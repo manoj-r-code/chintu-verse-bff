@@ -1,0 +1,36 @@
+{
+  "name": "chintu-verse-bff",
+  "version": "1.0.0",
+  "description": "backend for chintu-verse",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manoj-r-code/chintu-verse-bff.git"
+  },
+  "keywords": [
+    "chintu",
+    "MERN",
+    "Express",
+    "multer"
+  ],
+  "author": "Manoj R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manoj-r-code/chintu-verse-bff/issues"
+  },
+  "homepage": "https://github.com/manoj-r-code/chintu-verse-bff",
+  "dependencies": {
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "multer": "^1.4.5-lts.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^3.1.9"
+  }
+}
