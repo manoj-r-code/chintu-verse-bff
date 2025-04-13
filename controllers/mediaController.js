@@ -1,4 +1,5 @@
 const Media = require("../models/mediaModel");
+// const { cloudinary } = require("../config/cloudinaryConfig");
 
 const uploadMedia = async (req, res) => {
   try {
@@ -27,4 +28,17 @@ const getGallery = async (req, res) => {
   }
 };
 
-module.exports = { uploadMedia, getGallery };
+const deleteMedia = async (req, res) => {
+  try {
+    const media = await Media.findById(req.params.id);
+    if (!media) return res.status(404).json({ message: "Media not found" });
+
+    await Media.findByIdAndDelete(req.params.id);
+    res.json({ message: "Deleted successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Deletion failed" });
+  }
+};
+
+module.exports = { uploadMedia, getGallery, deleteMedia };
