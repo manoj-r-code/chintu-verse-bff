@@ -11,6 +11,10 @@ const authMiddleware = require("../middleware/authMiddleware");
 const upload = multer({ storage });
 const router = express.Router();
 
+router.get("/ping", (req, res) => {
+  res.status(200).send('pong');
+});
+
 router.get("/", authMiddleware, (req, res) => {
   res.send("Hello World from ChintuVerse backend!");
 });
