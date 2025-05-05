@@ -7,20 +7,23 @@ const {
   deleteMedia,
 } = require("../controllers/mediaController");
 const authMiddleware = require("../middleware/authMiddleware");
+const adminMiddleware = require("../middleware/adminMiddleware");
 
 const upload = multer({ storage });
 const router = express.Router();
 
 router.get("/ping", (req, res) => {
-  res.status(200).send('pong');
+  res.status(200).send("pong");
 });
 
 router.get("/", authMiddleware, (req, res) => {
   res.send("Hello World from ChintuVerse backend!");
 });
-router.post("/upload",authMiddleware, upload.single("file"), uploadMedia);
-router.get("/getmedia",authMiddleware, getGallery);
-router.delete("/delete/:id",authMiddleware, deleteMedia);
+// router.post("/upload",authMiddleware, upload.single("file"), uploadMedia);
+router.post("/upload", authMiddleware,adminMiddleware, upload.single("file"), uploadMedia);
+
+router.get("/getmedia", authMiddleware, getGallery);
+router.delete("/delete/:id", authMiddleware, deleteMedia);
 
 // Example of a protected route
 router.get("/api/protected", authMiddleware, (req, res) => {
