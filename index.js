@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
-
 const mediaRoutes = require("./routes/mediaRoutes");
-
+const adminRoutes=require("./routes/adminRoutes")
 dotenv.config();
 
 const app = express();
@@ -14,6 +13,7 @@ app.use(express.json());
 
 app.use("/chintu/media", mediaRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/admin",adminRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI, {})
